@@ -1,12 +1,22 @@
+from time import sleep  # welcome message animation
+import sys  # to access parameters and functions
 import random
 
+welcome_message = "Welcome to the Tic Tac Toe game!\n"
+
+for x in welcome_message:
+    print(x, end='')
+    sys.stdout.flush()
+    sleep(.1)
 
 board = ["-", "-", "-",
-        "-", "-", "-",
-        "-", "-", "-"]
-currentPlayer = "X"
+         "-", "-", "-",
+         "-", "-", "-"]
 winner = None
+name = None
+currentPlayer = "X"
 gameRunning = True
+
 
 game_instructions = '''
 Please read instructions to play the game: \n
@@ -19,36 +29,63 @@ Please read instructions to play the game: \n
 '''
 print(game_instructions)
 
-# game board
+
+def get_name():
+    '''
+    Gets players name and only accpeting letters.
+    '''
+    print("What is your name?")
+    while True:
+        name = input("\nMy name is: ")
+        if not name.isalpha():
+            print("Please enter letters only.")
+            continue
+        else:
+            print(f"Welcome {name}!")
+            break
+    return name
+
+
+get_name()
+
+
+def start_game():
+    '''
+    asks the user to enter 'S' so the game can start
+    '''
+    while True:
+        start_game_input = input("Type 'S' to start the game:\n").lower()
+        if start_game_input == 's':
+            game_starting = 'Game starting...'
+            print(game_starting, end="\r")
+            sleep(1)
+            print(" " * len(game_starting), end="\r")
+            sleep(1)
+            break
+        else:
+            print(f"{start_game_input}Incorrect input, press 'S' to start game.")
+
+
+start_game()
+
+
 def printBoard(board):
+
     print(board[0] + " | " + board[1] + " | " + board[2])
     print("---------")
     print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
+    #
+    
 
-
-# take player input
 def playerInput(board):
-    inp = int(input("Select a spot 1-9: "))
-    if board[inp-1] == "-":
-        board[inp-1] = currentPlayer
+    inp = int(input("Enter a number 1-9: "))
+    if inp >= 1 and inp <= 9 and board[inp-1] == "-":
+         board[inp-1] = currentPlayer
     else:
-        print("Space already filled.")
+        print("Oops player is in that spot!")
 
-
-# check for win or tie
-def checkHorizontle(board):
-    global winner
-    if board[0] == board[1] == board[2] and board[0] != "-":
-        winner = board[0]
-        return True
-    elif board[3] == board[4] == board[5] and board[3] != "-":
-        winner = board[3]
-        return True
-    elif board[6] == board[7] == board[8] and board[6] != "-":
-        winner = board[6]
-        return True
 
 def checkRow(board):
     global winner
@@ -59,47 +96,43 @@ def checkRow(board):
         winner = board[1]
         return True
     elif board[2] == board[5] == board[8] and board[2] != "-":
-        winner = board[3]
-        return True
-
-
-def checkDiag(board):
-    global winner
-    if board[0] == board[4] == board[8] and board[0] != "-":
-        winner = board[0]
-        return True
-    elif board[2] == board[4] == board[6] and board[4] != "-":
         winner = board[2]
         return True
 
 
-def checkIfWin(board):
-    global gameRunning
-    if checkHorizontle(board):
-        printBoard(board)
-        print(f"The winner is {winner}!")
-        gameRunning = False
+def checkDiagonally(board):
+    global winner
+    if board[0] == board[4] == board[8] and board[0] != "-":
+        winner = board[0]
+        return True
+    elif board[2] == board[4] == board[6] and board[2] != "-":
+        winner = board[2]
+        return True
+    
 
-    elif checkRow(board):
-        printBoard(board)
-        print(f"The winner is {winner}!")
-        gameRunning = False
+def checkHorizontal(board):
+    global winner
+    if board[0] == board[1] == board[2] and board[1] != "-":
+        winner = board[0]
+        return True
+    elif board[3] == board[4] == board[5] and board[3] != "-":
+        winner = board[3]
+        return True
+    elif board[6] == board[7] == board[8] and board[6] != "-":
+        winner = board[6]
+        return True
 
-    elif checkDiag(board):
-        printBoard(board)
-        print(f"The winner is {winner}!")
-        gameRunning = False
 
-
-def checkIfTie(board):
+def checkTie(board):
     global gameRunning
     if "-" not in board:
         printBoard(board)
         print("It is a tie!")
         gameRunning = False
 
+        return_to_main_page()
 
-# switch player
+
 def switchPlayer():
     global currentPlayer
     if currentPlayer == "X":
@@ -108,12 +141,15 @@ def switchPlayer():
         currentPlayer = "X"
 
 
+# computer
 def computer(board):
     while currentPlayer == "O":
         position = random.randint(0, 8)
+        
         if board[position] == "-":
             board[position] = "O"
             switchPlayer()
+
 
 def checkWin(board):
     if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
@@ -154,9 +190,8 @@ def return_to_main_page():
 while gameRunning:
     printBoard(board)
     playerInput(board)
-    checkIfWin(board)
-    checkIfTie(board)
+    checkWin(board)
+    checkTie(board)
     switchPlayer()
     computer(board)
-    checkIfWin(board)
-    checkIfTie(board)
+    checkTie(board)
