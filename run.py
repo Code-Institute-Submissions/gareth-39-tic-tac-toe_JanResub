@@ -8,6 +8,17 @@ currentPlayer = "X"
 winner = None
 gameRunning = True
 
+game_instructions = '''
+Please read instructions to play the game: \n
+- The game displays a 3X3 grid
+- The user(you) will start the game first with the letter 'X'
+- The computer (opposition) will follow by the letter 'O'
+- To place your letter type a number between 1-9 this will choose your position
+- The first display their letter ('X', 'O') horizontally, vertically or diagonally wins!
+- If all of the 9 spaces are full and no one has won, the game will end in a tie
+'''
+print(game_instructions)
+
 # game board
 def printBoard(board):
     print(board[0] + " | " + board[1] + " | " + board[2])
