@@ -115,6 +115,41 @@ def computer(board):
             board[position] = "O"
             switchPlayer()
 
+def checkWin(board):
+    if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
+        print(f"The winner is {winner}")
+
+        return_to_main_page()
+
+
+def clear_board():
+    '''
+    Clears the board if user wants to play again
+    '''
+    board.extend([" ", " ", " ", " ", " ", " ", " ", " ", " "])
+    board.clear()
+
+
+def return_to_main_page():
+    '''
+    Asks users if they want to play again or quit
+    '''
+    print("*** Game Over *** \n")
+
+    print("Enter 'P' to play again \n")
+    print("Enter 'Q' if you want to quit the game \n")
+    while True:
+        global name
+        make_a_choice = input().strip()
+        if make_a_choice.lower() == 'q':
+            print(f"Thank you for playing the game {name}.")
+            quit()
+        elif make_a_choice == 'p':
+            print(f"Welcome back!")
+            start_game()
+            clear_board()
+            playerInput(board)
+
 
 while gameRunning:
     printBoard(board)
