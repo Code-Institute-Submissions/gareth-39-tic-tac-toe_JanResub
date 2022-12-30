@@ -172,7 +172,7 @@ def return_to_main_page():
     '''
     print("*** Game Over *** \n")
 
-   
+    print("Enter 'P' to play again \n")
     print("Enter 'Q' if you want to quit the game \n")
     while True:
         global name
