@@ -2,7 +2,7 @@ from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
 import random
 
-welcome_message = "Welcome to the Tic Tac Toe game!\n"
+welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
 for x in welcome_message:
     print(x, end='')
@@ -172,13 +172,13 @@ def return_to_main_page():
     '''
     print("*** Game Over *** \n")
 
-    print("Enter 'P' to play again \n")
+   
     print("Enter 'Q' if you want to quit the game \n")
     while True:
         global name
         make_a_choice = input().strip()
         if make_a_choice.lower() == 'q':
-            print(f"Thank you for playing the game {name}.")
+            print(f"Thank you for playing the game.")
             quit()
         elif make_a_choice == 'p':
             print(f"Welcome back!")
