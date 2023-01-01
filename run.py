@@ -24,8 +24,10 @@ Please read instructions to play the game: \n
 - The user(you) will start the game first with the letter 'X'
 - The computer (opposition) will follow by the letter 'O'
 - To place your letter type a number between 1-9 this will choose your position
-- The first display their letter ('X', 'O') horizontally, vertically or diagonally wins!
-- If all of the 9 spaces are full and no one has won, the game will end in a tie
+- The first display their letter ('X', 'O')
+-horizontally, vertically or diagonally wins!
+- If all of the 9 spaces are full and no one has won,
+-the game will end in a tie
 '''
 print(game_instructions)
 
@@ -77,12 +79,12 @@ def printBoard(board):
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
     #
-    
+
 
 def playerInput(board):
     inp = int(input("Enter a number 1-9: "))
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-         board[inp-1] = currentPlayer
+        board[inp-1] = currentPlayer
     else:
         print("Oops player is in that spot!")
 
@@ -108,7 +110,7 @@ def checkDiagonally(board):
     elif board[2] == board[4] == board[6] and board[2] != "-":
         winner = board[2]
         return True
-    
+
 
 def checkHorizontal(board):
     global winner
@@ -145,7 +147,7 @@ def switchPlayer():
 def computer(board):
     while currentPlayer == "O":
         position = random.randint(0, 8)
-        
+
         if board[position] == "-":
             board[position] = "O"
             switchPlayer()
@@ -158,15 +160,12 @@ def checkWin(board):
         return_to_main_page()
 
 
-
-
 def return_to_main_page():
     '''
-    Asks users if they want to play again or quit
+    Asks users if they want to quit
     '''
     print("*** Game Over *** \n")
 
-    
     print("Enter 'Q' if you want to quit the game \n")
     while True:
         global name
@@ -174,11 +173,6 @@ def return_to_main_page():
         if make_a_choice.lower() == 'q':
             print(f"Thank you for playing the game.")
             quit()
-        elif make_a_choice == 'p':
-            print(f"Welcome back!")
-            start_game()
-            clear_board()
-            playerInput(board)
 
 
 while gameRunning:
