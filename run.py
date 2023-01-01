@@ -129,14 +129,15 @@ def checkHorizontal(board):
         return True
 
 
-def checkTie(board):
+def checkWinOrTie(board):
     global gameRunning
-    if "-" not in board:
-        printBoard(board)
-        print("It is a tie!")
+    if checkHorizontal(board) or checkRow(board) or checkDiagonally(board):
+        print(f"The winner is {winner}!")
+        gameRunning = False
+    elif "-" not in board:
+        print("It is a Tie!")
         gameRunning = False
 
-        return_to_main_page()
 
 
 def switchPlayer():
@@ -157,12 +158,6 @@ def computer(board):
             switchPlayer()
 
 
-def checkWin(board):
-    if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
-        print(f"Congrat's, The winner is {winner}")
-
-        return_to_main_page()
-
 
 def return_to_main_page():
     '''
@@ -182,9 +177,7 @@ def return_to_main_page():
 while gameRunning:
     printBoard(board)
     playerInput(board)
-    checkWin(board)
-    checkTie(board)
+    checkWinOrTie(board)
     switchPlayer()
     computer(board)
-    checkTie(board)
 
