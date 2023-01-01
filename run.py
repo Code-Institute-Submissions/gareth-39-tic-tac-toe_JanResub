@@ -1,13 +1,8 @@
-from time import sleep  # welcome message animation
-import sys  # to access parameters and functions
 import random
 
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
-for x in welcome_message:
-    print(x, end='')
-    sys.stdout.flush()
-    sleep(.1)
+
 
 board = ["-", "-", "-",
          "-", "-", "-",
