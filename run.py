@@ -153,17 +153,11 @@ def computer(board):
 
 def checkWin(board):
     if checkRow(board) or checkDiagonally(board) or checkHorizontal(board):
-        print(f"The winner is {winner}")
+        print(f"Congrat's, The winner is {winner}")
 
         return_to_main_page()
 
 
-def clear_board():
-    '''
-    Clears the board if user wants to play again
-    '''
-    board.extend([" ", " ", " ", " ", " ", " ", " ", " ", " "])
-    board.clear()
 
 
 def return_to_main_page():
@@ -172,7 +166,7 @@ def return_to_main_page():
     '''
     print("*** Game Over *** \n")
 
-    print("Enter 'P' to play again \n")
+    
     print("Enter 'Q' if you want to quit the game \n")
     while True:
         global name
