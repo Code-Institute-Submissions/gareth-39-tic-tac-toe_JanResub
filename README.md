@@ -46,7 +46,7 @@ https://github.com/gareth-39/tic-tac-toe
 
 # Testing:
 - I sent my live link to family and friends so they could play the game.
-- I ran it through my local terminal and the Code Insitute Heroku terminal.
+- I ran it through my local terminal and the Code Institute Heroku terminal.
 
 # Bugs:
 - I had a few indentation errors.
@@ -61,3 +61,21 @@ https://github.com/gareth-39/tic-tac-toe
 - PEP8
 - - No errors were returned on https://pep8ci.herokuapp.com/ <br><br>
 ![Alt text](readMe.images/PEP8Validator.png)
+<br><br>
+
+# Deployment:
+This project was deployment using Code institute's mock terminal on Heroku.
+
+- Steps for deployment:
+- - Create a Heroku app.
+- - Set the buildpacks to Python and Nodejs in that order.
+- - Link the Heroku app to my repository.
+- - Click on deploy.<br><br>
+
+# Credits:
+- Code institute http://codeinstitute.net/
+- Youtube https://www.youtube.com/
+- Google http://google.com/
+- Wikipedia Tic tac toe game http://wikipedia.com/
+- Fellow colleagues on Slack.
+- As always my mentor Jubril Akolade.
