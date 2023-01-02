@@ -1,7 +1,8 @@
-from time import sleep  # welcome message animation
-import sys  # to access parameters and functions
+from time import sleep  # welcome message animation.
+import sys  # to access parameters and functions.
 import random
 
+# My welcome message.
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
 for x in welcome_message:
@@ -11,7 +12,7 @@ for x in welcome_message:
 
 
 
-
+# My board setup.
 board = ["-", "-", "-",
          "-", "-", "-",
          "-", "-", "-"]
@@ -20,7 +21,7 @@ name = None
 currentPlayer = "X"
 gameRunning = True
 
-
+# My game instructions.
 game_instructions = '''
 Please read instructions to play the game: \n
 - The game displays a 3X3 grid
@@ -34,7 +35,7 @@ Please read instructions to play the game: \n
 '''
 print(game_instructions)
 
-
+# Adding your name and only accepting letters.
 def get_name():
     '''
     Gets players name and only accpeting letters.
@@ -53,7 +54,7 @@ def get_name():
 
 get_name()
 
-
+# My starting of the game.
 def start_game():
     '''
     asks the user to enter 'S' so the game can start
@@ -73,6 +74,7 @@ def start_game():
 
 start_game()
 
+# Printing of the board to the terminal.
 
 def printBoard(board):
 
@@ -83,6 +85,7 @@ def printBoard(board):
     print(board[6] + " | " + board[7] + " | " + board[8])
     #
 
+# Picking your game number.
 
 def playerInput(board):
     inp = int(input("Enter a number 1-9: "))
@@ -92,6 +95,7 @@ def playerInput(board):
         print("Oops player is in that spot!")
         switchPlayer()
 
+# Checking for a winner.
 
 def checkRow(board):
     global winner
@@ -105,6 +109,7 @@ def checkRow(board):
         winner = board[2]
         return True
 
+# Checking diagonally for a winner.
 
 def checkDiagonally(board):
     global winner
@@ -115,6 +120,7 @@ def checkDiagonally(board):
         winner = board[2]
         return True
 
+# Checking for a winner horizontally.
 
 def checkHorizontal(board):
     global winner
@@ -128,6 +134,7 @@ def checkHorizontal(board):
         winner = board[6]
         return True
 
+# Checking for a win or tie
 
 def checkWinOrTie(board):
     global gameRunning
@@ -139,6 +146,7 @@ def checkWinOrTie(board):
         gameRunning = False
 
 
+# Switching turns between player and A.I.
 
 def switchPlayer():
     global currentPlayer
@@ -158,6 +166,7 @@ def computer(board):
             switchPlayer()
 
 
+# Instruction for when the game ends.
 
 def return_to_main_page():
     '''
@@ -173,7 +182,7 @@ def return_to_main_page():
             print(f"Thank you for playing the game.")
             quit()
 
-
+# My print statements.
 while gameRunning:
     printBoard(board)
     playerInput(board)
