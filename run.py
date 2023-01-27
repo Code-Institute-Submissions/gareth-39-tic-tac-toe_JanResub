@@ -93,32 +93,22 @@ def print_board(board):
 
 # Entering your number.
 def player_input():
-    
-    while True:
-        print_board(board)
-
-        while True:
-
-            try:
-
-                player_input = int(input('Select a spot 1 to 9! :\n'))
-
-                if player_input in range(1, 10):
-                    if board[player_input] == "-":
-                        board[player_input] = current_player
-                        break
-                    else:
-                        print(
-                            f"The spot {player_input} is taken. "
-                            "Choose another number.")
-                else:
-                    print('Invalid selection. Number must be between 1/9!\n')
-
-            except ValueError:
-                print("Oops invalid input. Please enter a valid number:\n")
-
-
-player_input()
+    marker = ''
+    player1 = ''
+    computer = ''
+    while not (marker == 'X' or marker == 'O'):
+        marker = input("Please select a marker 'x' or 'o': ").upper()
+        if (marker != 'X') or (marker != 'O'):
+            clear_output()
+        if marker == 'X':
+            print(f"You are '{marker}' '")
+            print("Computer is 'O'")
+            player1,computer = 'X','O'
+        elif marker == 'O':
+            print(f"You are '{marker}' '")
+            print("Computer is 'X'")
+            player1,computer = 'O','X'
+    return player1,computer
 
 
 # Checking winning actions.
@@ -219,7 +209,7 @@ def return_to_main_page():
 # Instructs the game.
 while game_running:
     print_board(board)
-    player_input(board)
+    player_input()
     check_win(board)
     check_tie(board)
     switch_player()
