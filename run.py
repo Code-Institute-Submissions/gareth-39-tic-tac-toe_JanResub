@@ -2,6 +2,7 @@
 from time import sleep
 import sys
 import random
+import autopep8
 
 # Welcome animation
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
@@ -17,7 +18,6 @@ board = ["-", "-", "-",
 winner = None
 name = None
 current_player = "X"
-game_running = True
 
 # Game instructions.
 game_instructions = '''
@@ -92,14 +92,39 @@ def print_board(board):
 
 
 # Entering your number.
-def player_input(board):
+def player_input():
+    '''
+    checks users choice on board
+    '''
+    while True:
+        print_board(board)
+
+        while True:
+
+            try:
+
+                user_input = int(input('Select a spot 1 to 9! :\n'))
+
+                if user_input in range(0, 8):
+                    if board[user_input] == "-":
+                        board[user_input] = current_player
+                        break
+                    else:
+                        print(
+                            f"The spot {user_input} is taken. "
+                            "Choose another number.")
+                else:
+                    print('Invalid selection. Number must be between 1/9!\n')
+
+            except ValueError:
+                print("Oops invalid input. Please enter a valid number:\n")
+
     inp = int(input("Enter a number 1-9: "))
     if inp >= 1 and inp <= 9 and board[inp-1] == "-":
         board[inp-1] = current_player
-    
     else:
         print("Oops player is in that spot!")
-        switch_player()
+        
 
 
 # Checking winning actions.
@@ -198,11 +223,12 @@ def return_to_main_page():
 
 
 # Instructs the game.
-while game_running:
-    print_board(board)
-    player_input(board)
     check_win(board)
     check_tie(board)
     switch_player()
     computer(board)
+    check_win(board)
     check_tie(board)
+
+
+player_input()
