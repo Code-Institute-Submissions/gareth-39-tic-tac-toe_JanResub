@@ -92,13 +92,33 @@ def print_board(board):
 
 
 # Entering your number.
-def player_input(board):
-    inp = int(input("Enter a number 1-9: "))
-    if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-        board[inp-1] = current_player
-    else:
-        print("Oops player is in that spot!")
-        switch_player()
+def player_input():
+    
+    while True:
+        print_board(board)
+
+        while True:
+
+            try:
+
+                player_input = int(input('Select a spot 1 to 9! :\n'))
+
+                if player_input in range(1, 10):
+                    if board[player_input] == "-":
+                        board[player_input] = current_player
+                        break
+                    else:
+                        print(
+                            f"The spot {player_input} is taken. "
+                            "Choose another number.")
+                else:
+                    print('Invalid selection. Number must be between 1/9!\n')
+
+            except ValueError:
+                print("Oops invalid input. Please enter a valid number:\n")
+
+
+player_input()
 
 
 # Checking winning actions.
