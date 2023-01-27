@@ -92,23 +92,14 @@ def print_board(board):
 
 
 # Entering your number.
-def player_input():
-    marker = ''
-    player1 = ''
-    computer = ''
-    while not (marker == 'X' or marker == 'O'):
-        marker = input("Please select a marker 'x' or 'o': ").upper()
-        if (marker != 'X') or (marker != 'O'):
-            clear_output()
-        if marker == 'X':
-            print(f"You are '{marker}' '")
-            print("Computer is 'O'")
-            player1,computer = 'X','O'
-        elif marker == 'O':
-            print(f"You are '{marker}' '")
-            print("Computer is 'X'")
-            player1,computer = 'O','X'
-    return player1,computer
+def player_input(board):
+    inp = int(input("Enter a number 1-9: "))
+    if inp >= 1 and inp <= 9 and board[inp-1] == "-":
+        board[inp-1] = current_player
+    
+    else:
+        print("Oops player is in that spot!")
+        switch_player()
 
 
 # Checking winning actions.
@@ -209,7 +200,7 @@ def return_to_main_page():
 # Instructs the game.
 while game_running:
     print_board(board)
-    player_input()
+    player_input(board)
     check_win(board)
     check_tie(board)
     switch_player()
