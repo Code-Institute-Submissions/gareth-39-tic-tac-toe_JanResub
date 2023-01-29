@@ -32,11 +32,10 @@ https://github.com/gareth-39/tic-tac-toe
 - First player to get Three in a row wins
 - If you pick the same number as one already picked you will be told you have to pick another square.
 - If there is no winner a tie will be comfirmed.
-![Alt text](readMe.images/StartGame.png)
-![Alt text](readMe.images/RunningGame1.png)
-![Alt text](readMe.images/RunningGame2.png)
-![Alt text](readMe.images/RunningGame3.png)
-![Alt text](readMe.images/EndGame.png)<br>
+![Alt text](readMe.images/Game%20start.png)
+![Alt text](readMe.images/name%20entry.png)
+![Alt text](readMe.images/invalid%20input.png)
+![Alt text](readMe.images/finished%20game.png)
 
 #
 # Future Features:
@@ -45,6 +44,7 @@ https://github.com/gareth-39/tic-tac-toe
 - A scoreboard. <br><br>
 
 # Testing:
+- Re-tested numerous times as when I tested in the terminal it worked perfectly but did not work in Heroku realised when I fixed the game I needed to re-dploy my heroku link to implement the new code and changes.
 - I sent my live link to family and friends so they could play the game.
 - I ran it through my local terminal and the Code Institute Heroku terminal.
 
@@ -53,6 +53,7 @@ https://github.com/gareth-39/tic-tac-toe
 - I also had spelling errors.
 - I had bug in my code when the user entered a number the game stopped working, it was a simple mistake in my print statement.
 - I fixed these bugs by carefully reading over my work.
+- My code had a serious error i never picked up on in testing when a letter was entered instead of a number the game crashed. The fix was i completely re-wrote the player input function which stopped the game crashing on Heroku. 
 
 # Remaining bugs:
 - There are no remaining bugs.
@@ -60,7 +61,7 @@ https://github.com/gareth-39/tic-tac-toe
 # Validator:
 - PEP8
 - - No errors were returned on https://pep8ci.herokuapp.com/ <br><br>
-![Alt text](readMe.images/PEP8Validator.png)
+![Alt text](readMe.images/ci%20python.png)
 <br><br>
 
 # Deployment:
