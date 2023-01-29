@@ -1,13 +1,13 @@
 '''imports'''
 
- # welcome message animation
-from time import sleep 
+# welcome message animation
+from time import sleep
 
 # to access parameters and functions
-import sys  
+import sys
 
 # computers turn
-import random  
+import random
 
 # welcome title with animation
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
@@ -231,7 +231,7 @@ def player_input():
                 if user_input in range(1, 10):
                     if board[user_input] == ' ':
                         board[user_input] = current_player
-                        break      
+                        break
                     else:
                         print(f"Oops player is in that spot!")
 

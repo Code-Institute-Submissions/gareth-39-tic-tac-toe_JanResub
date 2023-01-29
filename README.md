@@ -5,7 +5,7 @@ My Tic tac toe game is a python based game which is ran through Code Insitute's 
 
 Users can play a one on one game of Tic tac toe against a computer A.I. On a board that consists of Nine squares number 1-9.<br>
 
-- Here is a link to my live project https://tic-tac-toes.herokuapp.com/ 
+- Here is a link to my live project https://tic-tac-toes.herokuapp.com/
 - Here is a link to my Github repository
 https://github.com/gareth-39/tic-tac-toe
 <br><br>
