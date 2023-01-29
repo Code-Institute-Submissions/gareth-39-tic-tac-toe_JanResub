@@ -1,6 +1,4 @@
 '''imports'''
-from time import sleep  # welcome message animation
-import sys  # to access parameters and functions
 import random  # computers turn
 
 # welcome title with animation
