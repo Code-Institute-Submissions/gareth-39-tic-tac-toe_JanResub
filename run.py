@@ -1,10 +1,14 @@
-# imports
+'''imports'''
+# welcome message animation
 from time import sleep
-import sys
-import random
-import autopep8
 
-# Welcome animation
+ # to access parameters and functions
+import sys 
+
+# computers turn
+import random  
+
+# welcome title with animation
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
 for x in welcome_message:
@@ -12,15 +16,15 @@ for x in welcome_message:
     sys.stdout.flush()
     sleep(.1)
 
-board = ["-", "-", "-",
-         "-", "-", "-",
-         "-", "-", "-"]
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 winner = None
 name = None
 current_player = "X"
 
-# Game instructions.
+
+# print game instructions
 game_instructions = '''
+
 Please read instructions to play the game: \n
 - The game displays a 3X3 grid
 - The user(you) will start the game first with the letter 'X'
@@ -30,6 +34,7 @@ Please read instructions to play the game: \n
   horizontally, vertically or diagonally wins!
 - If all of the 9 spaces are full and no one has won,
   the game will end in a tie
+
                            1 | 2 |  3
                           ------------
                            4 | 5  | 6
@@ -39,7 +44,7 @@ Please read instructions to play the game: \n
 print(game_instructions)
 
 
-# Inputs player name.
+# players name input
 def get_name():
     '''
     Gets players name and only accpeting letters.
@@ -60,7 +65,6 @@ def get_name():
 get_name()
 
 
-# Starts the game
 def start_game():
     '''
     asks the user to enter 's' so the game can start
@@ -81,122 +85,125 @@ def start_game():
 start_game()
 
 
-# Prints the game board.
 def print_board(board):
+    '''
+    tic tac toe board
+    '''
 
-    print(board[0] + " | " + board[1] + " | " + board[2])
-    print("---------")
-    print(board[3] + " | " + board[4] + " | " + board[5])
-    print("---------")
-    print(board[6] + " | " + board[7] + " | " + board[8])
+    print(board[1], " | ", board[2], " | ", board[3], " | ",)
+    print('-'*15)
+    print(board[4], " | ", board[5], " | ", board[6], " | ",)
+    print('-'*15)
+    print(board[7], " | ", board[8],  " | ", board[9], " | ",)
+    print('\n')
 
-
-# Entering your number.
 def player_input():
     '''
-    checks users choice on board
+    checks users choice on the board
     '''
+
     while True:
+
         print_board(board)
 
         while True:
 
             try:
 
-                user_input = int(input('Select a spot 1 to 9! :\n'))
-
-                if user_input in range(0, 8):
-                    if board[user_input] == "-":
+                user_input = int(input("Enter a number 1-9: "))
+                if user_input in range(1, 10):
+                    if board[user_input] == ' ':
                         board[user_input] = current_player
-                        break
+                        break      
                     else:
-                        print(
-                            f"The spot {user_input} is taken. "
-                            "Choose another number.")
+                        print(f"Oops player is in that spot!")
+
                 else:
-                    print('Invalid selection. Number must be between 1/9!\n')
+                    print("Invalid selection. Number must be between 1-9")
 
             except ValueError:
-                print("Oops invalid input. Please enter a valid number:\n")
+                print("Oops invalid input. Please enter a valid number")
 
-    inp = int(input("Enter a number 1-9: "))
-    if inp >= 1 and inp <= 9 and board[inp-1] == "-":
-        board[inp-1] = current_player
-    else:
-        print("Oops player is in that spot!")
-        
-
-
-# Checking winning actions.
+# checking possible winning options
 def check_row(board):
+    '''
+    checks for possible row win
+    '''
     global winner
-    if board[0] == board[3] == board[6] and board[0] != "-":
-        winner = board[0]
-        return True
-    elif board[1] == board[4] == board[7] and board[1] != "-":
+    if board[1] == board[2] == board[3] and board[1] != ' ':
         winner = board[1]
         return True
-    elif board[2] == board[5] == board[8] and board[2] != "-":
+    elif board[4] == board[5] == board[6] and board[4] != ' ':
+        winner = board[4]
+        return True
+    elif board[7] == board[8] == board[9] and board[9] != ' ':
+        winner = board[7]
+        return True
+
+def check_colum(board):
+    '''
+    checks for possible vertical win
+    '''
+    global winner
+    if board[1] == board[4] == board[7] and board[1] != ' ':
+        winner = board[1]
+        return True
+    elif board[2] == board[5] == board[8] and board[8] != ' ':
         winner = board[2]
         return True
-
-
-# Checking for a winner.
-def check_diagonally(board):
-    global winner
-    if board[0] == board[4] == board[8] and board[0] != "-":
-        winner = board[0]
-        return True
-    elif board[2] == board[4] == board[6] and board[2] != "-":
-        winner = board[2]
-        return True
-
-
-def check_horizontal(board):
-    global winner
-    if board[0] == board[1] == board[2] and board[1] != "-":
-        winner = board[0]
-        return True
-    elif board[3] == board[4] == board[5] and board[3] != "-":
+    elif board[3] == board[6] == board[9] and board[9] != ' ':
         winner = board[3]
         return True
-    elif board[6] == board[7] == board[8] and board[6] != "-":
-        winner = board[6]
+
+def check_diagonally(board):
+    '''
+    checks for possible diagonal win
+    '''
+    global winner
+    if board[1] == board[5] == board[9] and board[9] != ' ':
+        winner = board[1]
+        return True
+    elif board[3] == board[5] == board[7] and board[7] != ' ':
+        winner = board[3]
         return True
 
-
-# Checking for a tie
 def check_tie(board):
-    global game_running
-    if "-" not in board:
-        print_board(board)
-        print("It is a tie!")
-        game_running = False
+    '''
+    checks for a tie, prints a message to let the user know
+    '''
+    if board.count(' ') > 1:
+        return False
+    else:
+        return True
 
-        return_to_main_page()
+# computer
+def computer(board):
+    '''
+    chooses random move for computers move
+    '''
+    while current_player == "O":
+        position = random.randint(1, 9)
+        if board[position] == ' ':
+            board[position] = "O"
+            switch_player()
 
-
-# Switching Player to A.I.
+# switching player 'X' to computer 'O'
 def switch_player():
+    '''
+    switches the player after users move
+    '''
     global current_player
     if current_player == "X":
         current_player = "O"
     else:
         current_player = "X"
 
-
-# Computer.
-def computer(board):
-    while current_player == "O":
-        position = random.randint(0, 8)
-        if board[position] == "-":
-            board[position] = "O"
-            switch_player()
-
-
-# Checking to make sure of a winner.
+# check to see who the winner is
 def check_win(board):
-    if check_row(board) or check_diagonally(board) or check_horizontal(board):
+    '''
+    checks for the winner or a tie
+    '''
+    if check_row(board) or check_diagonally(board) or check_colum(board):
         print_board(board)
         if winner == 'X':
             print("You are the winner!")
@@ -205,8 +212,14 @@ def check_win(board):
 
         return_to_main_page()
 
+    elif check_tie(board):
+        print_board(board)
+        print("It's a Tie")
+        return_to_main_page()
+    else:
+        return None
 
-# Ends the game.
+
 def return_to_main_page():
     '''
     Asks users if they want to quit
@@ -218,17 +231,16 @@ def return_to_main_page():
         global name
         make_a_choice = input().strip()
         if make_a_choice.lower() == 'q':
-            print(f"Thank you for playing Tic Tac Toe.")
+            print(f"Thank you for playing  my Tic Tac Toe.")
             quit()
 
 
-# Instructs the game.
-    check_win(board)
-    check_tie(board)
-    switch_player()
-    computer(board)
-    check_win(board)
-    check_tie(board)
+        check_win(board)
+        check_tie(board)
+        switch_player()
+        computer(board)
+        check_win(board)
+        check_tie(board)
 
 
 player_input()
