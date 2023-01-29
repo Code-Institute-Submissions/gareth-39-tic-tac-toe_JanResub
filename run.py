@@ -1,10 +1,16 @@
 '''imports'''
-from time import sleep  # welcome message animation
-import sys  # to access parameters and functions
-import random  # computers turn
+
+ # welcome message animation
+from time import sleep 
+
+# to access parameters and functions
+import sys  
+
+# computers turn
+import random  
 
 # welcome title with animation
-welcome_message = "Welcome to the Tic Tac Toe game!\n"
+welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
 for x in welcome_message:
     print(x, end='')
@@ -91,7 +97,7 @@ def print_board(board):
     print('\n')
 
 
-# checking possible winning options
+# checking winning options
 def check_row(board):
     '''
     checks for possible row win
@@ -171,7 +177,7 @@ def computer(board):
             switch_player()
 
 
-# check to see who the winner is
+# check who won the game
 def check_win(board):
     '''
     checks for the winner or a tie
