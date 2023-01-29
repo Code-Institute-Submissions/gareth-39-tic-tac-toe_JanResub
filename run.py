@@ -1,14 +1,9 @@
 '''imports'''
-# welcome message animation
-from time import sleep
+from time import sleep  # welcome message animation
+import sys  # to access parameters and functions
+import random  # computers turn
 
- # to access parameters and functions
-import sys 
-
-# computers turn
-import random  
-
-# welcome title with animation
+# welcome animation title
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
 for x in welcome_message:
@@ -97,34 +92,8 @@ def print_board(board):
     print(board[7], " | ", board[8],  " | ", board[9], " | ",)
     print('\n')
 
-def player_input():
-    '''
-    checks users choice on the board
-    '''
 
-    while True:
-
-        print_board(board)
-
-        while True:
-
-            try:
-
-                user_input = int(input("Enter a number 1-9: "))
-                if user_input in range(1, 10):
-                    if board[user_input] == ' ':
-                        board[user_input] = current_player
-                        break      
-                    else:
-                        print(f"Oops player is in that spot!")
-
-                else:
-                    print("Invalid selection. Number must be between 1-9")
-
-            except ValueError:
-                print("Oops invalid input. Please enter a valid number")
-
-# checking possible winning options
+# checking winning options
 def check_row(board):
     '''
     checks for possible row win
@@ -139,6 +108,20 @@ def check_row(board):
     elif board[7] == board[8] == board[9] and board[9] != ' ':
         winner = board[7]
         return True
+
+
+def check_diagonally(board):
+    '''
+    checks for possible diagonal win
+    '''
+    global winner
+    if board[1] == board[5] == board[9] and board[9] != ' ':
+        winner = board[1]
+        return True
+    elif board[3] == board[5] == board[7] and board[7] != ' ':
+        winner = board[3]
+        return True
+
 
 def check_colum(board):
     '''
@@ -155,17 +138,6 @@ def check_colum(board):
         winner = board[3]
         return True
 
-def check_diagonally(board):
-    '''
-    checks for possible diagonal win
-    '''
-    global winner
-    if board[1] == board[5] == board[9] and board[9] != ' ':
-        winner = board[1]
-        return True
-    elif board[3] == board[5] == board[7] and board[7] != ' ':
-        winner = board[3]
-        return True
 
 def check_tie(board):
     '''
@@ -175,6 +147,19 @@ def check_tie(board):
         return False
     else:
         return True
+
+
+# switching player 'X' to computer 'O'
+def switch_player():
+    '''
+    switches the player after users move
+    '''
+    global current_player
+    if current_player == "X":
+        current_player = "O"
+    else:
+        current_player = "X"
+
 
 # computer
 def computer(board):
@@ -187,16 +172,6 @@ def computer(board):
             board[position] = "O"
             switch_player()
 
-# switching player 'X' to computer 'O'
-def switch_player():
-    '''
-    switches the player after users move
-    '''
-    global current_player
-    if current_player == "X":
-        current_player = "O"
-    else:
-        current_player = "X"
 
 # check to see who the winner is
 def check_win(board):
@@ -231,9 +206,35 @@ def return_to_main_page():
         global name
         make_a_choice = input().strip()
         if make_a_choice.lower() == 'q':
-            print(f"Thank you for playing  my Tic Tac Toe.")
+            print(f"Thank you for playing Tic Tac Toe.")
             quit()
 
+def player_input():
+    '''
+    checks users choice on the board
+    '''
+
+    while True:
+
+        print_board(board)
+
+        while True:
+
+            try:
+
+                user_input = int(input("Enter a number 1-9: "))
+                if user_input in range(1, 10):
+                    if board[user_input] == ' ':
+                        board[user_input] = current_player
+                        break      
+                    else:
+                        print(f"Oops player is in that spot!")
+
+                else:
+                    print("Invalid selection. Number must be between 1-9")
+
+            except ValueError:
+                print("Oops invalid input. Please enter a valid number")
 
         check_win(board)
         check_tie(board)
@@ -241,6 +242,5 @@ def return_to_main_page():
         computer(board)
         check_win(board)
         check_tie(board)
-
 
 player_input()
