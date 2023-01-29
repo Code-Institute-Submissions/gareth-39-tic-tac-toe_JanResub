@@ -9,7 +9,17 @@ Users can play a one on one game of Tic tac toe against a computer A.I. On a boa
 - Here is a link to my Github repository
 https://github.com/gareth-39/tic-tac-toe
 <br><br>
-![Alt text](readMe.images/LiveGame.png) 
+![Alt text](readMe.images/LiveGame.png)<br><br>
+
+# Libraries used:
+-  Import sys:
+- - Import sys provides various functions and variables that are used to manipulate different parts of the Python runtime environment.
+
+- Import Random:
+- -  import random module in Python defines a series of functions for generating or manipulating random integers.
+
+- From time import sleep:
+- - From time import sleep function is used to add delay in the execution of a program. We can use python sleep function to halt the execution of the program for given time in seconds.<br><br>
 
 
 # How to play the game:
