@@ -1,5 +1,7 @@
-'''imports'''
 import random  # computers turn
+import sys  # to access parameters and functions
+import random  # computers turn
+
 
 # welcome title with animation
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
