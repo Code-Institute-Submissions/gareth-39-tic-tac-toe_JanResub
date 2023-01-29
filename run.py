@@ -1,10 +1,10 @@
-import random  # computers turn
+'''imports'''
+from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
 import random  # computers turn
 
-
 # welcome title with animation
-welcome_message = "Welcome to my Tic Tac Toe game!\n"
+welcome_message = "Welcome to the Tic Tac Toe game!\n"
 
 for x in welcome_message:
     print(x, end='')
@@ -19,7 +19,6 @@ current_player = "X"
 
 # print game instructions
 game_instructions = '''
-
 Please read instructions to play the game: \n
 - The game displays a 3X3 grid
 - The user(you) will start the game first with the letter 'X'
@@ -29,7 +28,6 @@ Please read instructions to play the game: \n
   horizontally, vertically or diagonally wins!
 - If all of the 9 spaces are full and no one has won,
   the game will end in a tie
-
                            1 | 2 |  3
                           ------------
                            4 | 5  | 6
