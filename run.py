@@ -3,7 +3,7 @@ from time import sleep  # welcome message animation
 import sys  # to access parameters and functions
 import random  # computers turn
 
-# welcome animation title
+# welcome title with animation
 welcome_message = "Welcome to my Tic Tac Toe game!\n"
 
 for x in welcome_message:
@@ -93,7 +93,7 @@ def print_board(board):
     print('\n')
 
 
-# checking winning options
+# checking possible winning options
 def check_row(board):
     '''
     checks for possible row win
@@ -209,6 +209,7 @@ def return_to_main_page():
             print(f"Thank you for playing Tic Tac Toe.")
             quit()
 
+
 def player_input():
     '''
     checks users choice on the board
@@ -242,5 +243,6 @@ def player_input():
         computer(board)
         check_win(board)
         check_tie(board)
+
 
 player_input()
