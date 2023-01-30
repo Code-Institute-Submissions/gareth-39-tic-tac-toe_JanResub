@@ -42,10 +42,6 @@ https://github.com/gareth-39/tic-tac-toe
 - First player to get Three in a row wins
 - If you pick the same number as one already picked you will be told you have to pick another square.
 - If there is no winner a tie will be comfirmed.
-![Alt text](readMe.images/Game%20start.png)
-![Alt text](readMe.images/name%20entry.png)
-![Alt text](readMe.images/invalid%20input.png)
-![Alt text](readMe.images/finished%20game.png)
 
 #
 # Future Features:
@@ -57,6 +53,10 @@ https://github.com/gareth-39/tic-tac-toe
 - Re-tested numerous times as when I tested in the terminal it worked perfectly but did not work in Heroku realised when I fixed the game I needed to re-dploy my heroku link to implement the new code and changes.
 - I sent my live link to family and friends so they could play the game.
 - I ran it through my local terminal and the Code Institute Heroku terminal.
+![Alt text](readMe.images/Game%20start.png)
+![Alt text](readMe.images/name%20entry.png)
+![Alt text](readMe.images/name%20entry.png)
+![Alt text](readMe.images/finished%20game.png)<br><br>
 
 # Bugs:
 - I had a few indentation errors.
@@ -78,10 +78,15 @@ https://github.com/gareth-39/tic-tac-toe
 This project was deployment using Code institute's mock terminal on Heroku.
 
 - Steps for deployment:
+- - Sign up for heroku.
 - - Create a Heroku app.
 - - Set the buildpacks to Python and Nodejs in that order.
+- - Add a confrig var (key) PORT (value) 8000.
 - - Link the Heroku app to my repository.
-- - Click on deploy.<br><br>
+- - Build the repository.
+- - Click on deploy.
+- - New page opens with working app.
+<br><br>
 
 # Credits:
 - Code institute http://codeinstitute.net/
